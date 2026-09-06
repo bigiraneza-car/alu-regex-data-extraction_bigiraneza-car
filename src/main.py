@@ -23,17 +23,11 @@ Time = re.compile(r"\b(?:[0-1]\d|2[0-3]):[0-5]\d\b")  #Matches valid 24-h format
 Card = re.compile(r"\b(\d{4}[-\s]?){3}\d{4}\b")  # Matches 16-digit card numbers
 #4 groups of 4 digits each, separated by spaces, or hyphens, or nothing.
 
-#phone number extraction.
-for p in Phone.finditer(text):
-    print(p.group())
 
 #Time extraction, format 24-h
 for t in Time.finditer(text):
     print(t.group())
 
-#emails extraction
-for e in email_pattern.finditer(text):
-    print(e.group())
 
 #credit card number extraction
 for c in Card.finditer(text):
@@ -84,9 +78,39 @@ def luhn_check(card):
 def mask_card(card):
     return "*" * (len(card)-4) + card[-4:]
 
+# =====Result storage dictionary=====
+reuslts = {
+        "emails": [],
+        "alu_emails": {
+        "official": [],
+        "alumni": [],
+        "si": []
+        },
+        "phone_numbers": [],
+        "times": [],
+        "credit_cards":[]
+        }
+     
+
 # ==== Extraction =====
 
 #emails extraction
-for e in Email.finditer(text):
-    print(e.group())
+for e in email_pattern.finditer(text):
+    email = e.group()
 
+    if not email_isvalid(email):
+        continue
+    results["emails"].append(email)
+    alu_type = alu_email(email)
+
+    if alu_type:
+        results["alu_emails"][alu_type].append(email)
+
+#phone number extraction.                                                   
+for p in phone_pattern.finditer(text):
+    phone = p.group()
+
+    results["phone_numbers"].append(phone)
+
+#Time extraction, format 24-h                                               
+for t in Time.finditer(text):                                                   print(t.group()) 
