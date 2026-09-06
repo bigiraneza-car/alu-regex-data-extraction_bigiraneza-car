@@ -113,4 +113,13 @@ for p in phone_pattern.finditer(text):
     results["phone_numbers"].append(phone)
 
 #Time extraction, format 24-h                                               
-for t in Time.finditer(text):                                                   print(t.group()) 
+for t in Time.finditer(text):
+    time = t.group()
+    results["times"].append(time)
+
+#Credit card extraction
+for c in Card.finditer(text):
+    card = c.group()
+
+    #remove spaces and hyphens
+    normalized_card = normal_card(card)
