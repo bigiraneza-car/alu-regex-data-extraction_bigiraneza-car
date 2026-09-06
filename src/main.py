@@ -46,6 +46,11 @@ def alu_email(email):
     
     return None
 
+#masking email username
+def mask_email(email):
+    username, domain =email.split("@")
+    return username[0] + "*" *(len(username) - 1) + "@" + domain
+
 #remove spaces and hyphens for a card number
 def normal_card(card):
     return re.sub(r"[-\s]", "", card)
