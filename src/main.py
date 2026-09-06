@@ -24,14 +24,6 @@ Card = re.compile(r"\b(\d{4}[-\s]?){3}\d{4}\b")  # Matches 16-digit card numbers
 #4 groups of 4 digits each, separated by spaces, or hyphens, or nothing.
 
 
-#Time extraction, format 24-h
-for t in Time.finditer(text):
-    print(t.group())
-
-
-#credit card number extraction
-for c in Card.finditer(text):
-    print(c.group())
 
 #========== Validation functions ===========
 
@@ -60,7 +52,7 @@ def normal_card(card):
 
 #Validate a card number using the luhn algorithm
 def luhn_check(card):
-    digits = [int(digit) for digit in card_number]
+    digits = [int(digit) for digit in card]
 
     checksum = 0
     balance = len(digits) % 2
@@ -79,7 +71,7 @@ def mask_card(card):
     return "*" * (len(card)-4) + card[-4:]
 
 # =====Result storage dictionary=====
-reuslts = {
+results = {
         "emails": [],
         "alu_emails": {
         "official": [],
@@ -123,3 +115,13 @@ for c in Card.finditer(text):
 
     #remove spaces and hyphens
     normalized_card = normal_card(card)
+
+    #validate the normalized card number
+    if not luhn_check(normalized_card):
+        continue
+
+    #masking the card number in the output
+    masked = mask_card(normalized_card)
+
+    #appending the number in the result dict
+    results["credit_cards"].append({"masked": masked})
