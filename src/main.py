@@ -125,3 +125,15 @@ for c in Card.finditer(text):
 
     #appending the number in the result dict
     results["credit_cards"].append({"masked": masked})
+
+# ====== write output in the sample-output.json file  ======
+output_file = ROOT / "output" / "sample-output.json" #location of the output folder and file
+
+#conversion of the python results into JSON + indentation for cleaner output#After, write the converted results in utf-8 format in the output_file.
+output_file.write_text( json.dumps(results, indent=4), encoding="utf-8")
+
+#prints completion message
+print("Extraction completed successfully.")
+
+#output file name confirmation
+print(f"the output shown in the file: {output_file}")
