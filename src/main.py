@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #importing python's regex module
-import re
+import re, json
 from pathlib import Path
 #Determine the project root directory from the location of this script.
 ROOT = Path(__file__).resolve().parent.parent
