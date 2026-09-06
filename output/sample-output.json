@@ -1,0 +1,97 @@
+{
+    "emails": [
+        "a.nwosu@alueducation.com",
+        "support@alueducation.com",
+        "billing.team@alueducation.com",
+        "amara.nwosu@student.alu.edu",
+        "j.mukamana@si.alueducation.com",
+        "finance-ops@alueducation.com",
+        "kevin.otieno@alumni.alueducation.com",
+        "kevin.otieno@alumni.alueducation.com",
+        "kevin.otieno@alumni.alueducation.com.evil-mirror.net",
+        "noreply@monitoring.alueducation.com",
+        "dan.k@alueducation.com",
+        "mary.smith@alueducation.com",
+        "robert@ALUEDUCATION.COM",
+        "lina-w@si.alueducation.com",
+        "admin@alueducation.com",
+        "ceo@alueducation.com",
+        "someone@alumni.alueducation.com",
+        "someone@alumni-alueducation.com",
+        "x@si.alueducation.co",
+        "ignore.previous.instructions@alueducation.com",
+        "admissions@alueducation.com",
+        "pierre.habimana@alueducation.com",
+        "security@alueducation-support.com"
+    ],
+    "alu_emails": {
+        "official": [
+            "a.nwosu@alueducation.com",
+            "support@alueducation.com",
+            "billing.team@alueducation.com",
+            "finance-ops@alueducation.com",
+            "dan.k@alueducation.com",
+            "mary.smith@alueducation.com",
+            "admin@alueducation.com",
+            "ceo@alueducation.com",
+            "ignore.previous.instructions@alueducation.com",
+            "admissions@alueducation.com",
+            "pierre.habimana@alueducation.com"
+        ],
+        "alumni": [
+            "kevin.otieno@alumni.alueducation.com",
+            "kevin.otieno@alumni.alueducation.com",
+            "someone@alumni.alueducation.com"
+        ],
+        "si": [
+            "j.mukamana@si.alueducation.com",
+            "lina-w@si.alueducation.com"
+        ]
+    },
+    "phone_numbers": [
+        "+250 788 123 456",
+        "(078) 812-3456",
+        "+1 (415) 555-0132",
+        "+250-788-123-456",
+        "078 812 34 56",
+        "+44 20 7946 0958",
+        "(0) 788 123 456",
+        "+1-800-555-0199",
+        "+250 783 456 789"
+    ],
+    "times": [
+        "08:15",
+        "14:37",
+        "07:45",
+        "15:10",
+        "11:02",
+        "09:05",
+        "23:59",
+        "00:00",
+        "13:00",
+        "21:58",
+        "11:59",
+        "10:30",
+        "10:30"
+    ],
+    "credit_cards": [
+        {
+            "masked": "************1111"
+        },
+        {
+            "masked": "************0004"
+        },
+        {
+            "masked": "************0004"
+        },
+        {
+            "masked": "************1111"
+        },
+        {
+            "masked": "************0000"
+        },
+        {
+            "masked": "************0007"
+        }
+    ]
+}
