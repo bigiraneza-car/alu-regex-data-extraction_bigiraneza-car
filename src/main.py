@@ -48,7 +48,10 @@ def alu_email(email):
 
 #masking email username
 def mask_email(email):
-    username, domain =email.split("@")
+    if "@" not in email:
+        return email
+
+    username, domain =email.split("@", 1)
     return username[0] + "*" *(len(username) - 1) + "@" + domain
 
 #remove spaces and hyphens for a card number
@@ -97,11 +100,13 @@ for e in email_pattern.finditer(text):
 
     if not email_isvalid(email):
         continue
-    results["emails"].append(email)
+    #masking the emails username
+    mask = mask_email(email)
+    results["emails"].append(mask)
     alu_type = alu_email(email)
 
     if alu_type:
-        results["alu_emails"][alu_type].append(email)
+        results["alu_emails"][alu_type].append(mask)
 
 #phone number extraction.                                                   
 for p in phone_pattern.finditer(text):
