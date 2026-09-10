@@ -93,6 +93,16 @@ results = {
      
 
 # ==== Extraction =====
+#Checking for hostile and invalid email
+def hostile_email(text, end):
+    #take a small window right after the macthed email
+
+    tail = text[end:end+30] #takes max 30 characters after the match.
+    if tail.startswith(("'", "<", '"')):
+        return True
+    if tail.startswith(".") and tail[1:2].isalpha():
+        return True   #e.g checks if no .evil.net or other malicious character are after the dot.
+    return False
 
 #emails extraction
 invalid_email = 0
@@ -100,7 +110,7 @@ invalid_email = 0
 for e in email_pattern.finditer(text):
     email = e.group()
 
-    if not email_isvalid(email):
+    if not email_isvalid(email) or hostile_email(text, e.end()):
         invalid_email += 1
         continue
     #masking the emails username
