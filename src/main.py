@@ -95,10 +95,13 @@ results = {
 # ==== Extraction =====
 
 #emails extraction
+invalid_email = 0
+
 for e in email_pattern.finditer(text):
     email = e.group()
 
     if not email_isvalid(email):
+        invalid_email += 1
         continue
     #masking the emails username
     mask = mask_email(email)
@@ -120,14 +123,16 @@ for t in Time.finditer(text):
     results["times"].append(time)
 
 #Credit card extraction
+invalid_card = 0 # invalid credit card number initial count
 for c in Card.finditer(text):
     card = c.group()
 
     #remove spaces and hyphens
     normalized_card = normal_card(card)
 
-    #validate the normalized card number
+    #validate the normalized card number, and count of invalid credit card.
     if not luhn_check(normalized_card):
+        invalid_card += 1
         continue
 
     #masking the card number in the output
@@ -135,6 +140,9 @@ for c in Card.finditer(text):
 
     #appending the number in the result dict
     results["credit_cards"].append({"masked": masked})
+
+print(f"valid emails: {len(results['emails'])}, {invalid_email} ignored")
+print(f"valid credit cards: {len(results['credit_cards'])}, {invalid_card} ignored")
 
 # ====== write output in the sample-output.json file  ======
 output_file = ROOT / "output" / "sample-output.json" #location of the output folder and file
