@@ -74,6 +74,10 @@ def luhn_check(card):
         checksum += digit
     return checksum % 10 == 0
 
+#Checks for card with all digits indentical
+def all_digit_card(digits):
+    return len(set(digits)) == 1
+
 #mask all the digits except the last four digits of a card number.
 def mask_card(card):
     return "*" * (len(card)-4) + card[-4:]
@@ -141,7 +145,7 @@ for c in Card.finditer(text):
     normalized_card = normal_card(card)
 
     #validate the normalized card number, and count of invalid credit card.
-    if not luhn_check(normalized_card):
+    if not luhn_check(normalized_card) or all_digit_card(normalized_card):
         invalid_card += 1
         continue
 
